@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
       `http://127.0.0.1:5000/spin/${betAmount}/black`,
       {
         headers: {
-          Authorization: "Pramod12-",
+          Authorization: authKey,
         },
       }
     );
