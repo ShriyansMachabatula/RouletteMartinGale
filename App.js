@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
     placeBet(bet);
   });
 
-  const authKey = process.env.REACT_APP_AUTH_KEY;
+  const authKey = config.authKey;
 
   // Function to reset balance
   function resetBalance() {
