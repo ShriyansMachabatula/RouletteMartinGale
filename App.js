@@ -35,11 +35,13 @@ document.addEventListener("DOMContentLoaded", () => {
     placeBet(bet);
   });
 
+  const authKey = process.env.REACT_APP_AUTH_KEY;
+
   // Function to reset balance
   function resetBalance() {
     const request1 = new Request(`http://127.0.0.1:5000/stop`, {
       headers: {
-        Authorization: "Pramod12-",
+        Authorization: authKey,
       },
     });
 
