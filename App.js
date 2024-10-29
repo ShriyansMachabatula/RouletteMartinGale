@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
       `http://127.0.0.1:5000/spin/${betAmount}/black`,
       {
         headers: {
-          Authorization: authKey,
+          Authorization: "authKey",
         },
       }
     );
@@ -35,13 +35,12 @@ document.addEventListener("DOMContentLoaded", () => {
     placeBet(bet);
   });
 
-  const authKey = config.authKey;
 
   // Function to reset balance
   function resetBalance() {
     const request1 = new Request(`http://127.0.0.1:5000/stop`, {
       headers: {
-        Authorization: authKey,
+        Authorization: "authKey",
       },
     });
 
