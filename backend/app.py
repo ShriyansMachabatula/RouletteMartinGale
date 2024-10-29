@@ -1,10 +1,16 @@
 from flask import Flask, session, jsonify
 from flask_cors import CORS
 import random
+from dotenv import load_dotenv
+import os
+
+load_dotenv()  # Load environment variables from .env file
+
+SECRET_KEY = os.getenv("SECRET_KEY")  # Fetch the secret key
 
 app = Flask(__name__)
 CORS(app)
-app.secret_key = 'Pramod12-'
+app.secret_key = SECRET_KEY
 
 balance = 10000
 stop_flag = False
