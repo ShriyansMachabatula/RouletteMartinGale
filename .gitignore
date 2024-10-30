@@ -2,9 +2,6 @@
 .env
 
 
-#Ignore the config.js file 
-config.js
-
 # Ignore Python virtual environments and cache
 venv/
 __pycache__/
