@@ -1,4 +1,4 @@
-from flask import Flask, session, jsonify
+from flask import Flask, session, jsonify, render_template
 from flask_cors import CORS
 import random
 from dotenv import load_dotenv
@@ -27,7 +27,7 @@ board = {
 
 @app.route("/")
 def home():
-    return "Welcome to Roulette Martingale!"
+    return render_template("index.html")
 
 @app.route("/spin/<bet>/<colorChoice>")
 def spin_once(bet, colorChoice):

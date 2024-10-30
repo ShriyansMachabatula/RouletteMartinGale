@@ -1,31 +1,27 @@
 <!DOCTYPE html>
 <html lang="en-US">
-    <head>
-        <meta charset="UTF-8"/>
-        <meta name="viewport" content="width=device-width" />
-        <title>Roulette</title>
-        <link rel="stylesheet" href="styles.css"> 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        
-        <h1 class="title">Roulette Automation</h1>
-    </head>
-    <div class="d-flex flex-column justify-content-center w-100 h-100">
-        <div class="d-flex flex-column justify-content-center align-items-center"></div>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width" />
+    <title>Roulette</title>
+    <!-- Updated CSS link using url_for -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+</head>
+<body class="parent">
+    <h1 class="title">Roulette Automation</h1>
+    <div class="container">
+        <label for="bet" class="bet-amount">Please enter your bet Amount:</label>
+        <input class="input_bar" type="number" id="bet" name="name" required minlength="4" maxlength="8" size=50 placeholder="Bet Amount"/>
+        <a href="#"><button class="bn632-hover bn25">Bet</button></a>
+        <a href="#"><button class="bn632-hover bn25" id="reset">Reset</button></a>
+        <a href="#"><button class="bn633-hover bn22">Automate</button></a>  
     </div>
-
-    <div class="container" >
-        <body class="parent">
-                <label for="bet" class="bet-amount">Please enter your bet Amount:</label>
-                <input class=input_bar type="number" id="bet" name="name" required minlength="4" maxlength="8" size=50 placeholder="Bet Amount"/>
-                <a href="/"><button class="bn632-hover bn25">Bet</button></a>
-                <a href="/"><button class="bn632-hover bn25" id="reset">Reset</button></a>
-                <a href="/"><button class="bn633-hover bn22">Automate</button></a>  
-        </body>
-    </div>
-    <script src="config.js"></script>
-    <script src="App.js" defer></script> 
     <div class="output">
         <output></output>
     </div>
+    <!-- Updated JavaScript link using url_for -->
+    <script src="{{ url_for('static', filename='App.js') }}" defer></script>
+</body>
 </html>

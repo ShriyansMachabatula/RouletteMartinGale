@@ -6,14 +6,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Function to place a bet
   function placeBet(betAmount) {
-    const request = new Request(
-      `http://127.0.0.1:5000/spin/${betAmount}/black`,
-      {
-        headers: {
-          Authorization: "authKey",
-        },
-      }
-    );
+    const request = new Request(`/spin/${betAmount}/black`, {
+      // Updated path
+      headers: {
+        Authorization: "authKey",
+      },
+    });
 
     fetch(request)
       .then((response) => response.json())
@@ -37,7 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Function to reset balance
   function resetBalance() {
-    const request1 = new Request(`http://127.0.0.1:5000/stop`, {
+    const request1 = new Request(`/stop`, {
+      // Updated path
       headers: {
         Authorization: "authKey",
       },
