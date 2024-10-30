@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width" />
     <title>Roulette</title>
-    <!-- Updated CSS link using url_for -->
+    <!-- CSS link using url_for to reference static folder -->
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +21,7 @@
     <div class="output">
         <output></output>
     </div>
-    <!-- Updated JavaScript link using url_for -->
+    <!-- JavaScript link using url_for to reference static folder -->
     <script src="{{ url_for('static', filename='App.js') }}" defer></script>
 </body>
 </html>
