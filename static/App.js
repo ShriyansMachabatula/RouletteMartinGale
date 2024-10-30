@@ -1,12 +1,13 @@
 document.addEventListener("DOMContentLoaded", () => {
   const betInput = document.getElementById("bet");
   const betButton = document.querySelector(".bn632-hover.bn25"); // Bet button
-  const resetButton = document.getElementById("reset"); // Reset button
-  const automationButton = document.querySelector(".bn633-hover.bn22"); // Automate button
+  const resetButton = document.getElementById("reset"); // reset button
+  const automationButton = document.querySelector(".bn633-hover.bn22"); // Corrected
 
   // Function to place a bet
   function placeBet(betAmount) {
     const request = new Request(`/spin/${betAmount}/black`, {
+      // Updated path
       headers: {
         Authorization: "authKey",
       },
@@ -16,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .then((response) => response.json())
       .then((data) => {
         console.log("Success:", data);
-        document.querySelector("output").innerText = data.message;
+        document.querySelector("output").innerText = data;
       })
       .catch((error) => console.log(`Error: ${error}`));
   }
@@ -34,20 +35,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Function to reset balance
   function resetBalance() {
+    const request1 = new Request(`/stop`, {
+      // Updated path
+      headers: {
+        Authorization: "authKey",
+      },
+    });
+
+  
+    // Function to reset balance
     fetch("/stop")
       .then((response) => response.json())
       .then((data) => {
-        console.log("Reset Success:", data);
-        document.querySelector("output").innerText = data; // Display reset message
+          console.log("Reset Success:", data);
+          document.querySelector("output").innerText = data;
       })
       .catch((error) => console.error("Error:", error));
-  }
+}
 
-  // Reset button event listener
-  resetButton.addEventListener("click", (event) => {
-    event.preventDefault();
-    resetBalance();
-  });
+// Reset button event listener
+resetButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  resetBalance();
+});
+
 
   // Automation button event listener
   automationButton.addEventListener("click", (event) => {
@@ -67,6 +78,6 @@ document.addEventListener("DOMContentLoaded", () => {
         clearInterval(automationInterval);
         console.log("Automation stopped.");
       });
-    }, 2000); // Automates every 2 seconds
+    }, 2000);
   });
 });
