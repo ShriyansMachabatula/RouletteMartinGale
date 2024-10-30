@@ -25,9 +25,11 @@ board = {
     31: "black", 32: "red", 33: "black", 34: "red", 35: "black", 36: "red"
 }
 
+
 @app.route("/")
 def home():
     return render_template("index.html")
+
 
 @app.route("/spin/<bet>/<colorChoice>")
 def spin_once(bet, colorChoice):
@@ -50,15 +52,11 @@ def spin_once(bet, colorChoice):
 
 @app.route("/stop")
 def stop():
+    global balance
     balance = 10000
     session['bet'] = 1.5
-    return "Game stopped: Balance reset to 10000"
+    return jsonify("Game stopped: Balance reset to 10000")
 
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
-
-
-
-
-    

@@ -1,13 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
   const betInput = document.getElementById("bet");
   const betButton = document.querySelector(".bn632-hover.bn25"); // Bet button
-  const resetButton = document.getElementById("reset"); // reset button
-  const automationButton = document.querySelector(".bn633-hover.bn22"); // Corrected
+  const resetButton = document.getElementById("reset"); // Reset button
+  const automationButton = document.querySelector(".bn633-hover.bn22"); // Automate button
 
   // Function to place a bet
   function placeBet(betAmount) {
     const request = new Request(`/spin/${betAmount}/black`, {
-      // Updated path
       headers: {
         Authorization: "authKey",
       },
@@ -17,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .then((response) => response.json())
       .then((data) => {
         console.log("Success:", data);
-        document.querySelector("output").innerText = data;
+        document.querySelector("output").innerText = data.message;
       })
       .catch((error) => console.log(`Error: ${error}`));
   }
@@ -35,18 +34,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Function to reset balance
   function resetBalance() {
-    const request1 = new Request(`/stop`, {
-      // Updated path
-      headers: {
-        Authorization: "authKey",
-      },
-    });
-
-    fetch(request1)
-      .then((response) => response.text())
+    fetch("/stop")
+      .then((response) => response.json())
       .then((data) => {
         console.log("Reset Success:", data);
-        document.querySelector("output").innerText = data;
+        document.querySelector("output").innerText = data; // Display reset message
       })
       .catch((error) => console.error("Error:", error));
   }
@@ -75,6 +67,6 @@ document.addEventListener("DOMContentLoaded", () => {
         clearInterval(automationInterval);
         console.log("Automation stopped.");
       });
-    }, 2000);
+    }, 2000); // Automates every 2 seconds
   });
 });
