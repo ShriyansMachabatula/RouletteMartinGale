@@ -29,14 +29,6 @@ board = {
     31: "black", 32: "red", 33: "black", 34: "red", 35: "black", 36: "red"
 }
 
-
-
-@app.route("/")
-def home():
-    return "Welcome to the Roulette Game API!"
-
-
-
 @app.route("/spin/<bet>/<colorChoice>")
 def spin_once(bet, colorChoice):
     global balance
