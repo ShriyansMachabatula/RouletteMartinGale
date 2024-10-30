@@ -1,12 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
   const betInput = document.getElementById("bet");
-  const betButton = document.querySelector(".bn632-hover.bn25"); 
+  const betButton = document.querySelector(".bn632-hover.bn25");
   const resetButton = document.getElementById("reset");
   const automationButton = document.querySelector(".bn633-hover.bn22");
 
   // Function to place a bet
   function placeBet(betAmount) {
-    fetch(`https://your-app-name.herokuapp.com/spin/${betAmount}/black`)
+    fetch(`https://roulettemartingale.herokuapp.com/spin/${betAmount}/black`)
       .then((response) => response.json())
       .then((data) => {
         console.log("Success:", data);
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Function to reset balance
   function resetBalance() {
-    fetch(`https://your-app-name.herokuapp.com/stop`)
+    fetch(`https://roulettemartingale.herokuapp.com/stop`)
       .then((response) => response.text())
       .then((data) => {
         console.log("Reset Success:", data);
@@ -52,7 +52,9 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
       placeBet(bet);
-      resetButton.addEventListener("click", () => clearInterval(automationInterval));
+      resetButton.addEventListener("click", () =>
+        clearInterval(automationInterval)
+      );
     }, 2000);
   });
 });
